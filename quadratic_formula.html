@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #chart-container {
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <script src="script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Quadratic Formula</h1>
+    a <input id="a" type="text" placeholder="a" onkeypress="onEnterKey(event)"><p></p>
+    b <input id="b" type="text" placeholder="b" onkeypress="onEnterKey(event)"><p></p>
+    c <input id="c" type="text" placeholder="c" onkeypress="onEnterKey(event)">
+
+    <p id="mathjax-equation">
+    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+    </p>
+
+    <div id="chart-container">
+        <canvas id="quadraticChart" width="300" height="300"></canvas>
+    </div>
+</body>
+</html>
