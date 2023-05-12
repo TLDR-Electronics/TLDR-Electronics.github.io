@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="/bootstrap.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
-    <title>TL;DR Electronics</title>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>TL;DR Electronics - Quadratic Solver</title>
 </head>
 
 <body>
@@ -40,7 +42,8 @@
     <div class="container mt-2">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Home</li>
+              <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="date">Quadratic Solver</li>
             </ol>
           </nav>
     </div>
@@ -49,25 +52,31 @@
     <!-- Content -->
     <section class="p-4">
         <div class="border rounded">
-            <h1 class=" mx-2 my-2">Hello!</h1>
+            <h1 class=" mx-2 my-2">Quadratic Solver</h1>
             <div class="mx-2 my-2">
-                <p>Hopefully, I will be adding more stuff. If I get around to it... &#128516</p>
+                <!-- TODO -->
             </div>
-        </div>
-        <div class="row row-cols-3 g-3 mt-2">
-          <div class="col">
-            <div class="card">
-              <img src="images/quad_card.png" class="card-img-top" alt="Quadratic Solver">
-              <div class="card-body">
-                <h5 class="card-title">Quadratic Solver</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to
-                  additional content. This content is a little bit longer.
+
+            <div class="column mx-2 my-2">
+                <p>a <input id="a" type="text" placeholder="1" value="1" onkeypress="onEnterKey(event)"></p>
+                <p>b <input id="b" type="text" placeholder="2" value="2" onkeypress="onEnterKey(event)"></p>
+                <p>c <input id="c" type="text" placeholder="-3" value="-3" onkeypress="onEnterKey(event)"></p>
+            </div>
+
+            <div class="row mx-2 my-2">
+                <p id="mathjax-equation">
+                    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
                 </p>
-                <a href="calcs/quadratic_solver.html" class="stretched-link"></a>
-              </div>
             </div>
-          </div>
+            <div class="row mx-5 my-5">
+                <div class="col">
+                    <div id="chart-container">
+                        <canvas id="quadraticChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 

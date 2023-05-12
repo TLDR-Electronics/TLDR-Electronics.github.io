@@ -1,8 +1,19 @@
+function toggleDarkMode() {
+    var element = document.body;
+    element.dataset.bsTheme = element.dataset.bsTheme == "light" ? "dark" : "light";
+}
+
 function calculateSolutions(a, b, c) {
     const discriminant = b * b - 4 * a * c;
 
-    if (a === 0 || discriminant < 0) {
-        return ["Not a valid quadratic equation or complex roots"];
+    if (a === 0) {
+        return ["Not a valid quadratic equation"];
+    }
+
+    if (discriminant < 0) {
+        const realPart = (-b / (2 * a)).toFixed(3);
+        const imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(3);
+        return [`${realPart} + ${imaginaryPart}i`, `${realPart} - ${imaginaryPart}i`];
     }
 
     const sqrtDiscriminant = Math.sqrt(discriminant);
@@ -13,6 +24,9 @@ function calculateSolutions(a, b, c) {
 }
 
 function formatNumber(number) {
+    if (typeof number === "string") {
+        return number;
+    }
     return (number % 1 !== 0) ? number.toFixed(3) : number;
 }
 
@@ -47,11 +61,16 @@ function onEnterKey(event) {
     }
 }
 
+window.onload = function() {
+    updateMathJax();
+};
+
+
 let quadraticChart;
 
-function generateChartData(a, b, c, x1, x2) {
-    const xMin = Math.min(x1, x2) - 2;
-    const xMax = Math.max(x1, x2) + 2;
+function generateChartData(a, b, c) {
+    const xMin = -10;
+    const xMax = 10;
     const step = (xMax - xMin) / 100;
     const data = [];
 
@@ -65,8 +84,8 @@ function generateChartData(a, b, c, x1, x2) {
 
 function createQuadraticChart(a, b, c, x1, x2) {
     const ctx = document.getElementById("quadraticChart").getContext("2d");
-
     const chartData = generateChartData(a, b, c, x1, x2);
+  
 
     quadraticChart = new Chart(ctx, {
         type: "line",
@@ -90,19 +109,42 @@ function createQuadraticChart(a, b, c, x1, x2) {
         options: {
             scales: {
                 x: { type: "linear", display: true, title: { display: true, text: "x" } },
-                y: { display: true, title: { display: true, text: "y" } }
+                y: {
+                    title: { display: true, text: "y" },
+                    type: "linear",
+                    position: "bottom",
+                    grid: {
+                        lineWidth: (context) => {
+                            if (context.tick.value === 0) {
+                                return 2;
+                            }
+                            return 1;
+                        },
+                        color: (context) => {
+                            if (context.tick.value === 0) {
+                                return 'rgba(0, 0, 0, 1)';
+                            }
+                            return 'rgba(0, 0, 0, 0.1)';
+                        }
+                    }
+                },
             }
         }
     });
 }
 
 function updateQuadraticChart(a, b, c, x1, x2) {
-    const chartData = generateChartData(a, b, c, x1, x2);
+    const chartData = generateChartData(a, b, c);
     quadraticChart.data.datasets[0].data = chartData;
-    quadraticChart.data.datasets[1].data = [{ x: x1, y: 0 }, { x: x2, y: 0 }];
+
+    if (isNaN(x1) || isNaN(x2) || typeof x1 === "string" || typeof x2 === "string") {
+        quadraticChart.data.datasets[1].data = [];
+    } else {
+        quadraticChart.data.datasets[1].data = [{ x: x1, y: 0 }, { x: x2, y: 0 }];
+    }
+
     quadraticChart.update();
 }
-
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("a").addEventListener("keyup", updateMathJax);
