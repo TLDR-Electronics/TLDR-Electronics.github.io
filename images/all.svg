@@ -1,0 +1,21 @@
+<svg width="350" height="200" xmlns="http://www.w3.org/2000/svg">
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <rect fill-opacity="0" id="svg_1" height="35" width="100" y="50" x="50" stroke="#ffffff" fill="#0fffff"/>
+  <rect fill-opacity="0" id="svg_2" height="35" width="100" y="50" x="200" stroke="#ffffff" fill="#0fffff"/>
+  <rect fill-opacity="0" id="svg_4" height="35" width="100" y="120" x="50" stroke="#ffffff" fill="#0fffff"/>
+  <line id="svg_5" y2="65" x2="200" y1="65" x1="150" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_7" y2="135" x2="175" y1="135" x1="150" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_9" y2="65" x2="174.5" y1="135" x1="174.5" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_10" y2="65" x2="50" y1="65" x1="0" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_11" y2="65" x2="350" y1="65" x1="300" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_12" y2="135" x2="50" y1="135" x1="25" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <line id="svg_13" y2="65" x2="25.16666" y1="135" x1="25.16666" fill-opacity="0" stroke="#ffffff" fill="none"/>
+  <ellipse ry="3" rx="3" id="svg_14" cy="64.66667" cx="25" stroke="#ffffff" fill="#ffffff"/>
+  <ellipse ry="3" rx="3" id="svg_16" cy="64.66667" cx="175" stroke="#ffffff" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_18" y="75.33333" x="89.66667" stroke="#ffffff" fill="#ffffff">R2</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_19" y="145.33333" x="89.66667" stroke="#ffffff" fill="#ffffff">R1</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_21" y="75.33333" x="239.66667" stroke="#ffffff" fill="#ffffff">R3</text>
+ </g>
+
+</svg>

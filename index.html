@@ -4,72 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/bootstrap.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
     <script src="/script.js"></script>
     <title>TL;DR Electronics</title>
 </head>
 
 <body>
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand bg-body-secondary">
-        <div class="container">
-            <a class="navbar-brand" href="#">TL;DR Electronics</a>
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link disabled dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calculators</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
+    <header class="header">
+        <h1>TL;DR Electronics</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" class="current">Home</a>
                 </li>
             </ul>
-            <div onclick="toggleDarkMode()">
-                <button type="button" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
-                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-    <!-- /Nav Bar -->
+        </nav>
+    </header>
 
-    <!-- Breadcrumb -->
-    <div class="container mt-2">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Home</li>
-            </ol>
-          </nav>
+    <div class="notice">
+        <ul>
+                <li>
+                    <a href="/calcs/quadratic_solver.html">Quadratic Solver</a>
+                </li>
+                <li>
+                    <a href="/calcs/combination_resistor_solver.html">Combination Resistor Solver</a>
+                </li>
+            </ul>
     </div>
-    <!-- /Breadcrumb-->
 
-    <!-- Content -->
-    <section class="p-4">
-        <div class="border rounded">
-            <h1 class=" mx-2 my-2">Hello!</h1>
-            <div class="mx-2 my-2">
-                <p>Hopefully, I will be adding more stuff. If I get around to it... &#128516</p>
-            </div>
-        </div>
-        <div class="row row-cols-3 g-3 mt-2">
-          <div class="col">
-            <div class="card">
-              <img src="images/quad_card.png" class="card-img-top" alt="Quadratic Solver">
-              <div class="card-body">
-                <h5 class="card-title">Quadratic Solver</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to
-                  additional content. This content is a little bit longer.
-                </p>
-                <a href="calcs/quadratic_solver.html" class="stretched-link"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-    </section>
 
 
 </body>
