@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark" />
+    <title>Capacitor Hold Up Solver</title>
+    <!--<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">!-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.pumpkin.min.css" />
+    <script type="text/javascript" src=""></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="container">
+        <hgroup>
+            <h1>TL;DR Electronics</h1>
+            <p></p>
+        </hgroup>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container">
+        <h1>Capacitor Hold Up Solver</h1>
+        <p></p>
+        <section id="input">
+            <h2></h2>
+            <article class="component">
+                <form>
+                    <label for="supply_voltage">Supply Voltage:</label>
+                    <input type="number" id="supply_voltage" value="12">
+
+
+                    <label for="minimum_voltage">Minimum Voltage:</label>
+                    <input type="number" id="minimum_voltage" value="10"></input><br>
+
+                    <div class="grid">
+                        <div>
+                            <label for="load">Load</label>
+                            <fieldset role="group">
+                                <input type="number" id="load" value="1000">
+                                <select name="load_multiplier" id="load_multiplier">
+                                    <option value="M">M</option>
+                                    <option value="k">k</option>
+                                    <option value="-" selected="selected">-</option>
+                                    <option value="m">m</option>
+                                    <option value="u">μ</option>
+                                    <option value="n">n</option>
+                                    <option value="p">p</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <label for="load_type">Type of load</label>
+                            <input type="radio" id="load_type_R" name="load_type" checked="checked">
+                            <label for="age1">Resistance (Ω)</label><br>
+                            <input type="radio" id="load_type_A" name="load_type">
+                            <label for="age2">Constant Current (A)</label><br>
+                            <input type="radio" id="load_type_W" name="load_type">
+                            <label for="age3">Constant Power (W)</label>
+                        </div>
+                    </div>
+                </form>
+
+                <img src="../images/rc_discharge.svg" alt=""><br>
+                <button onclick="">Find Capacitance</button>
+            </article>
+            <div id="results"></div>
+            <div id="table-container"></div>
+            </div>
+    </main>
+</body>
+
+</html>
