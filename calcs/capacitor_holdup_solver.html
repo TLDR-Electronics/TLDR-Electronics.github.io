@@ -7,7 +7,6 @@
     <meta name="color-scheme" content="light dark" />
     <title>TL;DR Electronics - Capacitor Hold Up Solver</title>
     <link rel="stylesheet" href="/style/pico.pumpkin.css" />
-    <script type="text/javascript" src="capacitor_holdup_solver.js"></script>
 </head>
 
 <body onload="calculate_capacitance()">
@@ -18,7 +17,7 @@
                 <ul>
                     <li>
                         <hgroup>
-                            <h1>TL;DR Electronics</h1>
+                            <h2>TL;DR Electronics</h2>
                         </hgroup>
                     </li>
                     <li class="hide-before-sm"><a aria-current="page" class="primary" href="/index.html">Home</a>
@@ -90,7 +89,7 @@
 
                     </div>
                     <div>
-                        <label for="load_type">Type of load</label>
+                        <label for="load_type_R">Type of load</label>
 
                         <input type="radio" id="load_type_R" name="load_type" value="R" checked="checked">
                         <label for="load_type_R">Resistance (Ω)</label><br>
@@ -107,6 +106,7 @@
             </article>
     </main>
     <!-- ./ Main -->
+    <script src="capacitor_holdup_solver.js"></script>
 </body>
 
 </html>

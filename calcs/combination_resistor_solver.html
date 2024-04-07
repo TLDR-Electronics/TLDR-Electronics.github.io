@@ -17,7 +17,7 @@
                 <ul>
                     <li>
                         <hgroup>
-                            <h1>TL;DR Electronics</h1>
+                            <h2>TL;DR Electronics</h2>
                         </hgroup>
                     </li>
                     <li class="hide-before-sm"><a aria-current="page" class="primary" href="/index.html">Home</a>
@@ -77,10 +77,13 @@
 
             <button onclick="calculate()">Find Combinations</button><br><br>
             <p>
-                <small><i><b>Note: </b>Combinations greater than ±10% of the target resistance will not be displayed</i></small>
+                <small><i><b>Note: </b>Combinations greater than ±10% of the target resistance will not be
+                        displayed</i></small>
             </p>
             <p>
-            <div id="results"></div>
+            <div class="overflow-auto">
+                <div id="results"></div>
+            </div>
             </p>
         </article>
     </main>
