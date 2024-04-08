@@ -24,21 +24,23 @@ function collectValues() {
 }
 
 function update_image() {
-    var image = document.getElementById("resistor_image");
+    var image = document.getElementById('resistor_image');
     const r3_zero = document.getElementById('zeroR3').checked;
     const r1_open = document.getElementById('infR1').checked;
+    const alt_config = document.getElementById('alt_config').checked ? '_alt' : '';
+
 
     if (r3_zero && r1_open) {
-        image.src = "/images/r1_only.svg"
+        image.src = `/images/r2_only${alt_config}.svg`
     }
     if (r3_zero && !r1_open) {
-        image.src = "/images/no_r3.svg"
+        image.src = `/images/no_r3${alt_config}.svg`
     }
     if (!r3_zero && !r1_open) {
-        image.src = "/images/all.svg"
+        image.src = `/images/all${alt_config}.svg`
     }
     if (!r3_zero && r1_open) {
-        image.src = "/images/no_r2.svg"
+        image.src = `/images/no_r1${alt_config}.svg`
     }
 
 }
@@ -51,15 +53,17 @@ function calculate() {
 }
 
 function findClosestCombinations() {
-    var startTime = performance.now()
+    //var startTime = performance.now()
     const target_resistance = parseFloat(document.getElementById('target_resistance').value);
     const force_r3_zero = document.getElementById('zeroR3').checked;
     const force_r1_open = document.getElementById('infR1').checked;
     const valuesList = collectValues();
+    const alt_config = document.getElementById('alt_config').checked;
 
     const results = [];
-    var count = 0;
+    //var count = 0;
     var skip = false;
+    var computed_resistance = 0;
 
     valuesList.forEach((R1, i) => {
         // Start the loop for R2 from 'i' instead of '0' to avoid duplicating pairs
@@ -71,14 +75,15 @@ function findClosestCombinations() {
 
                 // Various methods to reduce the amount of calculations:
 
-                if (R3 > target_resistance) {               // if R3 is > target resistance, there is no point calculating the rest.
-                } else if (R2 == 0 && R1 != 0) {            // if either R1 or R2 is 0, then R1 || R2 will always be 0. No point calculating these. R1 == R2 == 0 will be allowed though.
-                } else if (R1 == 0 && R2 != 0) {
-                } else if (force_r1_open && R1 < 1e99) {    // Handles the "Force R1 Open checkbox". I hate javascript. For some reason I can't use Number.POSITIVE_INFINITY to limit the resistance, so I have to use 1e99 instead.
-                } else if (force_r3_zero && R3 != 0) {      // Handles the "Force R3 Closed checkbox". 
-                } else {
+                if ((!force_r1_open || R1 > 1e99) &&    // Handles the R1 open checkbox
+                    (!force_r3_zero || R3 == 0)        // Handles the R3 closed checkbox
+                ) {
 
-                    const computed_resistance = 1 / (1 / R1 + 1 / R2) + R3;
+                    if (alt_config) {
+                        computed_resistance = 1 / (1 / R1 + 1 / (R2 + R3));
+                    } else {
+                        computed_resistance = 1 / (1 / R1 + 1 / R2) + R3;
+                    }
                     const diff = target_resistance - computed_resistance;
                     const abs_diff = Math.abs(diff);
 
@@ -87,7 +92,7 @@ function findClosestCombinations() {
                     if (abs_diff < (target_resistance * 0.1)) {
                         const diff_percent = 100 * ((computed_resistance - target_resistance) / target_resistance);
                         results.push({ R1, R2, R3, abs_diff, diff, computed_resistance, diff_percent });
-                        count += 1;
+                        //count += 1;
                     }
                 }
             });
@@ -100,8 +105,8 @@ function findClosestCombinations() {
     displayResults(closest);
     update_image();
     //console.log(count)
-    const endTime = performance.now()
-    console.log(`Calculations took ${endTime - startTime} milliseconds`)
+    //const endTime = performance.now()
+    //console.log(`Calculations took ${endTime - startTime} milliseconds`)
 }
 
 function displayResults(closest) {
