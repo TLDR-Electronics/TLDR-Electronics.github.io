@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" >
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,7 @@
 
     <!-- Main -->
     <main class="container">
-        <h3>Thermistor Solver</h3>
+        <h3>NTC Thermistor Solver</h3>
         <article class="component" onclick="calculateNtcResistance()" onkeyup="calculateNtcResistance()">
             <form>
                 <label for="B">B Constant</label>
@@ -51,14 +51,20 @@
                 <label for="rated_resistance">Rated Resistance (Ω)</label>
                 <input type="number" name="rated_resistance" id="rated_resistance" value="10000">
 
-                <label for="rated_temperature">Rated Temperature</label>
+
                 <fieldset role="group">
-                    <input type="number" name="rated_temperature" id="rated_temperature" value="25">
-                    <select name="rated_temperature_scale" id="rated_temperature_scale">
-                        <option value="c" selected>°C</option>
-                        <option value="f">°F</option>
-                        <option value="k">K</option>
-                    </select>
+                    <div>
+                        <label for="rated_temperature">Rated Temperature</label>
+                        <input type="number" name="rated_temperature" id="rated_temperature" value="25">
+                    </div>
+                    <div>
+                        <label for="rated_temperature_scale">Scale</label>
+                        <select name="rated_temperature_scale" id="rated_temperature_scale" disabled>
+                            <option value="c" selected>°C</option>
+                            <option value="f">°F</option>
+                            <option value="k">K</option>
+                        </select>
+                    </div>
                 </fieldset>
 
                 <fieldset role="group">
@@ -80,7 +86,7 @@
         </article>
     </main>
     <!-- ./ Main -->
-    <script type="text/javascript" src="thermistor_solver.js"></script>
+    <script type="text/javascript" src="ntc_thermistor_solver.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,6 @@ function calculateNtcResistance() {
     
     var container = document.getElementById("result");
 
-    container.innerHTML = Math.round(y)
+    container.innerHTML = Math.round(y) + " Ω"
 }
 
