@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TL;DR Electronics - Thermistor Solver</title>
     <link rel="stylesheet" href="/style/pico.pumpkin.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #ntcChart {
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 
-<body onload="calculateNtcResistance()">
+<body onload="calculateNTCSheet()">
     <!-- Header -->
     <header>
         <div class="container">
@@ -43,7 +49,7 @@
     <!-- Main -->
     <main class="container">
         <h3>NTC Thermistor Solver</h3>
-        <article class="component" onclick="calculateNtcResistance()" onkeyup="calculateNtcResistance()">
+        <article class="component" onclick="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
             <form>
                 <label for="B">B Constant</label>
                 <input type="number" name="B" id="B" value="3500">
@@ -84,6 +90,40 @@
             </form>
             <div id="result"></div>
         </article>
+        <article>
+            <details>
+                <summary>Graph</summary>
+                <div id="chart-container">
+                    <canvas id="ntcChart" width="300" height="300"></canvas>
+                </div>
+            </details>
+        </article>
+        <article class="component" onclick="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            <form>
+                <h4>Voltage Divider</h4>
+                <div>
+                    <label for="rail_voltage">Input Voltage (V)</label>
+                    <input type="number" name="rail_voltage" id="rail_voltage" value="5">
+                </div>
+                <div>
+                    <label for="trigger_voltage">Trigger Voltage (V)</label>
+                    <input type="number" name="trigger_voltage" id="trigger_voltage" value="2.5">
+                </div>
+                <div>
+                    <label for="trigger_temperature">Trigger Temperature (°C)</label>
+                    <input type="number" name="trigger_temperature" id="trigger_temperature" value=60>
+                </div>
+                <div>
+                    <label for="ntc_on_top">NTC on top</label>
+                    <input type="checkbox" role="switch" name="ntc_on_top" id="ntc_on_top">
+                </div>
+                <p align="center">
+                    <img id="ntc_image" src="/images/ntc_bottom.svg">
+                </p>
+            </form>
+            <div id="target_resistance">Target Resistance = </div>
+        </article>
+
         <article>
             <details>
                 <summary>Disclaimer</summary>
