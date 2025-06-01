@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" >
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -61,13 +61,13 @@
             </p>
 
             <div class="grid">
-            <label for="fosc">Oscillator Frequency [f<sub>OSC</sub>] (Hz):
-            <input type="number" id="fosc" name="fosc" value="4000000" oninput="calculateUART()"
-                onchange="calculateUART()" onkeypress="calculateUART()"></label>
+                <label for="fosc">Oscillator Frequency [f<sub>OSC</sub>] (Hz):
+                    <input type="number" id="fosc" name="fosc" value="4000000" oninput="calculateUART()"
+                        onchange="calculateUART()" onkeypress="calculateUART()"></label>
 
-            <label for="baud">Desired Baud Rate:
-            <input type="number" id="baud" name="baud" value="9600" oninput="calculateUART()" onchange="calculateUART()"
-                onkeypress="calculateUART()"></label>
+                <label for="baud">Desired Baud Rate:
+                    <input type="number" id="baud" name="baud" value="9600" oninput="calculateUART()"
+                        onchange="calculateUART()" onkeypress="calculateUART()"></label>
             </div>
             <button type="button" onclick="calculateUART()">Calculate</button>
             <hr>
@@ -184,9 +184,23 @@
             </tt>
 
             <h5>Easy Zero Baud Rate Error</h5>
-            <p>Under 2% baud error is typically acceptable, but it depends on the device. If you need to get the baud rate as low as possible.
+            <p>Under 2% baud error is typically acceptable, but it depends on the device. If you need to get the baud
+                rate as low as possible.
                 Consider using an external oscillator that is perfectly divisible by the baud rate, such as: 3.6864 MHz,
                 7.3728 MHz, 11.0592 MHz, 14.7456 MHz, etc.</p>
+        </article>
+        <article>
+            <details>
+                <summary>Disclaimer</summary>
+                <p>This calculator is intended for reference only. While efforts have been made to ensure the accuracy
+                    of
+                    calculations, no warranty is provided. Users must independently verify results before applying them
+                    in
+                    design, testing, or production. This tool is not intended for safety-critical or certified
+                    applications.
+                    Use
+                    at your own risk.</p>
+            </details>
         </article>
     </main>
     <!-- ./ Main -->
