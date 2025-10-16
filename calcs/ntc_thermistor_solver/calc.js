@@ -48,9 +48,10 @@ function updateVoltageDividerSection(R_0, B, K, T_0) {
     var image = document.getElementById('ntc_image');
 
     if (ntc_checked) {
-        image.src = `/images/ntc_top.svg`
+        image.src = `/calcs/ntc_thermistor_solver/images/ntc_top.svg`
+        
     } else {
-        image.src = `/images/ntc_bottom.svg`
+        image.src = `/calcs/ntc_thermistor_solver/images/ntc_bottom.svg`
     }
 
 }

@@ -35,15 +35,15 @@ function calculate_capacitance() {
     switch (type) {
         case "R":
             result = t/(load*Math.log(v_on/v_min));
-            image.src = "../images/rc_discharge.svg";
+            image.src = "/calcs/capacitor_holdup_solver/images/rc_discharge.svg";
             break;
         case "A":
             result = t*(load/(v_on-v_min))
-            image.src = "../images/cc_discharge.svg";
+            image.src = "/calcs/capacitor_holdup_solver/images/cc_discharge.svg";
             break;
         case "W":
             result = 2*load*(t/(v_on**2 - v_min**2))
-            image.src = "../images/cp_discharge.svg";
+            image.src = "/calcs/capacitor_holdup_solver/images/cp_discharge.svg";
             break;
     
         default:

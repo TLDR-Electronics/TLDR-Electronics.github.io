@@ -29,25 +29,23 @@ function update_image() {
     const r1_open = document.getElementById('infR1').checked;
     const alt_config = document.getElementById('alt_config').checked ? '_alt' : '';
 
-
     if (r3_zero && r1_open) {
-        image.src = `/images/r2_only${alt_config}.svg`
+        image.src = `/calcs/combination_resistor_solver/images/r2_only${alt_config}.svg`
     }
     if (r3_zero && !r1_open) {
-        image.src = `/images/no_r3${alt_config}.svg`
+        image.src = `/calcs/combination_resistor_solver/images/no_r3${alt_config}.svg`
     }
     if (!r3_zero && !r1_open) {
-        image.src = `/images/all${alt_config}.svg`
+        image.src = `/calcs/combination_resistor_solver/images/all${alt_config}.svg`
     }
     if (!r3_zero && r1_open) {
-        image.src = `/images/no_r1${alt_config}.svg`
+        image.src = `/calcs/combination_resistor_solver/images/no_r1${alt_config}.svg`
     }
-
 }
 
 function calculate() {
     var container = document.getElementById('results');
-    container.innerHTML = '<progress />';
+    container.innerHTML = '<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
     setTimeout(findClosestCombinations, 100);
 }
@@ -130,7 +128,8 @@ function createTable(tableData) {
     var tableBody = document.createElement('tbody');
     var container = document.getElementById('results');
 
-    table.className = "striped"; //pico.css class for striped tables
+    // Bootstrap table classes for striped table
+    table.className = "table table-striped table-hover";
     container.innerHTML = '';
 
     tableData.forEach(function (rowData, index) {
@@ -139,6 +138,7 @@ function createTable(tableData) {
             var cell;
             if (index === 0) { // This checks if it's the header row
                 cell = document.createElement('th');
+                cell.scope = "col"; // Bootstrap accessibility improvement
             } else {
                 cell = document.createElement('td');
             }

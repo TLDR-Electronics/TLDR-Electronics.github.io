@@ -42,9 +42,9 @@ function updateMathJax() {
 
     const mathJaxElement = document.getElementById("mathjax-equation");
     mathJaxElement.innerHTML = `When \\(a \\ne 0\\), there are two solutions to \\(${a}x^2 + ${b}x + ${c} = 0\\) and they are given by the quadratic formula:
-    $$x = {-${b} \\pm \\sqrt{${b}^2-4(${a})(${c})} \\over 2(${a})}.$$
+    $x = {-${b} \\pm \\sqrt{${b}^2-4(${a})(${c})} \\over 2(${a})}.$
     The solutions for the given values are:
-    $$x_1 = ${formattedX1}, x_2 = ${formattedX2}.$$`;
+    $x_1 = ${formattedX1}, x_2 = ${formattedX2}.$`;
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, mathJaxElement]);
 
     if (typeof quadraticChart === "undefined") {
@@ -85,7 +85,10 @@ function generateChartData(a, b, c) {
 function createQuadraticChart(a, b, c, x1, x2) {
     const ctx = document.getElementById("quadraticChart").getContext("2d");
     const chartData = generateChartData(a, b, c, x1, x2);
-  
+
+    if (quadraticChart) {
+        quadraticChart.destroy();
+    }
 
     quadraticChart = new Chart(ctx, {
         type: "line",
@@ -108,26 +111,42 @@ function createQuadraticChart(a, b, c, x1, x2) {
         },
         options: {
             scales: {
-                x: { type: "linear", display: true, title: { display: true, text: "x" } },
+                x: { 
+                    type: "linear", 
+                    display: true, 
+                    title: { display: true, text: "x" },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.4)',
+                        lineWidth: 1
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.8)'
+                    }
+                },
                 y: {
                     title: { display: true, text: "y" },
                     type: "linear",
                     position: "bottom",
                     grid: {
+                        color: 'rgba(255, 255, 255, 0.4)',
                         lineWidth: (context) => {
                             if (context.tick.value === 0) {
                                 return 2;
                             }
                             return 1;
-                        },
-                        color: (context) => {
-                            if (context.tick.value === 0) {
-                                return 'rgba(0, 0, 0, 1)';
-                            }
-                            return 'rgba(0, 0, 0, 0.1)';
                         }
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.8)'
                     }
-                },
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.8)'
+                    }
+                }
             }
         }
     });

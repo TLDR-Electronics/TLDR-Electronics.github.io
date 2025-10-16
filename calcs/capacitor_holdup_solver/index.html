@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    
+    <title>TL;DR Electronics</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <h2 class="mb-0">TL;DR Electronics</h2>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/TLDR-Electronics/" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24.25" viewBox="0 0 496 512" fill="currentColor">
+                                    <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1.3 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1.3zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main class="container mt-4">
+        
+<h3>Capacitor Holdup Solver</h3>
+
+<div class="card">
+    <div class="card-body">
+        
+        <form onclick="calculate_capacitance()" onkeyup="calculate_capacitance()">
+            <!-- Voltage Inputs -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="supply_voltage" class="form-label">Supply Voltage (V)</label>
+                    <input type="number" class="form-control" id="supply_voltage" value="5" step="0.1">
+                </div>
+                <div class="col-md-6">
+                    <label for="minimum_voltage" class="form-label">Minimum Voltage (V)</label>
+                    <input type="number" class="form-control" id="minimum_voltage" value="3.5" step="0.1">
+                </div>
+            </div>
+
+            <!-- Time and Load Inputs -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="time" class="form-label">Hold Up Time</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="time" value="0.1" step="0.001">
+                        <select class="form-select" name="time_multiplier" id="time_multiplier">
+                            <option value="1" selected>S</option>
+                            <option value="1e-3">mS</option>
+                            <option value="1e-6">μS</option>
+                            <option value="1e-9">nS</option>
+                            <option value="1e-12">pS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="load" class="form-label">Load</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="load" value="10000" step="0.001">
+                        <select class="form-select" name="load_multiplier" id="load_multiplier">
+                            <option value="1e6">M</option>
+                            <option value="1e3">k</option>
+                            <option value="1" selected>-</option>
+                            <option value="1e-3">m</option>
+                            <option value="1e-6">μ</option>
+                            <option value="1e-9">n</option>
+                            <option value="1e-12">p</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load Type Radio Buttons -->
+            <div class="mb-4">
+                <label class="form-label">Type of Load</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="load_type_R" name="load_type" value="R" checked>
+                    <label class="form-check-label" for="load_type_R">
+                        Resistance (Ω)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="load_type_A" name="load_type" value="A">
+                    <label class="form-check-label" for="load_type_A">
+                        Constant Current (A)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="load_type_W" name="load_type" value="W">
+                    <label class="form-check-label" for="load_type_W">
+                        Constant Power (W)
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <!-- Results Section -->
+        <div class="text-center mb-3">
+            <img id="discharge_image" src="images/rc_discharge.svg" alt="Discharge Circuit" class="img-fluid" style="max-height: 200px;">
+        </div>
+        
+        <div class="alert alert-info text-center">
+            <h5 class="mb-0">Capacitance Required: <strong id="output" class="text-white"></strong></h5>
+        </div>
+    </div>
+
+<script src="calc.js"></script>
+    </div>
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
