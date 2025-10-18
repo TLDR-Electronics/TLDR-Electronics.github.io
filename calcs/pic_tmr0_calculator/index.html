@@ -48,116 +48,116 @@
     <!-- Main -->
     <main class="container mt-4">
         
-<main class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-xl-8">
-            <h3 class="mb-4">PIC TMR0 Calculator</h3>
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-text">
-                        Use the calculator below to determine the register values needed for a timer 0 overflow period or
-                        frequency. This calculator is typically used for enhanced mid-range PIC microcontroller devices.
-                    </p>
 
-                    <form>
-                        <div class="row mb-3">
-                            <div class="col-md-4 mb-3">
-                                <label for="fosc" class="form-label">Oscillator Frequency [f<sub>OSC</sub>] (Hz):</label>
-                                <input type="number" class="form-control" id="fosc" name="fosc" value="500000" 
-                                       min="1" step="1" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="fout" class="form-label">Overflow Frequency [f<sub>out</sub>] (Hz):</label>
-                                <input type="number" class="form-control" id="fout" name="fout" value="250" 
-                                       step="0.01" min="0" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="tout" class="form-label">Or Overflow Period [t<sub>OUT</sub>] (S):</label>
-                                <input type="number" class="form-control" id="tout" name="tout" value="0.004" 
-                                       step="0.01" min="0" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
-                            </div>
-                        </div>
 
-                        <div class="d-grid gap-2 mb-4">
-                            <button type="button" class="btn btn-primary" onclick="calculateTMR0()">Calculate</button>
-                        </div>
-                    </form>
+<div class="card mb-3">
+    <div class="card-header">
+        <h4 class="mb-0">PIC TMR0 Calculator</h4>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            Use the calculator below to determine the register values needed for a timer 0 overflow period or
+            frequency. This calculator is typically used for enhanced mid-range PIC microcontroller devices.
+        </p>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">T0PS</th>
-                                    <th scope="col">TMRx</th>
-                                    <th scope="col">Actual Period (s)</th>
-                                    <th scope="col">Actual Frequency (Hz)</th>
-                                    <th scope="col">Error (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td id="tmrx2">6</td>
-                                    <td id="truePeriod2">0.004</td>
-                                    <td id="trueFrequency2">250.000</td>
-                                    <td id="error2">0.00</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td id="tmrx4">131</td>
-                                    <td id="truePeriod4">0.004</td>
-                                    <td id="trueFrequency4">250.000</td>
-                                    <td id="error4">0.00</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td id="tmrx8">194</td>
-                                    <td id="truePeriod8">0.004</td>
-                                    <td id="trueFrequency8">252.016</td>
-                                    <td id="error8">0.81</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">16</th>
-                                    <td id="tmrx16">225</td>
-                                    <td id="truePeriod16">0.004</td>
-                                    <td id="trueFrequency16">252.016</td>
-                                    <td id="error16">0.81</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">32</th>
-                                    <td id="tmrx32">240</td>
-                                    <td id="truePeriod32">0.004</td>
-                                    <td id="trueFrequency32">244.141</td>
-                                    <td id="error32">-2.34</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">64</th>
-                                    <td id="tmrx64">248</td>
-                                    <td id="truePeriod64">0.004</td>
-                                    <td id="trueFrequency64">244.141</td>
-                                    <td id="error64">-2.34</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">128</th>
-                                    <td id="tmrx128">252</td>
-                                    <td id="truePeriod128">0.004</td>
-                                    <td id="trueFrequency128">244.141</td>
-                                    <td id="error128">-2.34</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">256</th>
-                                    <td id="tmrx256">254</td>
-                                    <td id="truePeriod256">0.004</td>
-                                    <td id="trueFrequency256">244.141</td>
-                                    <td id="error256">-2.34</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <label for="fosc" class="form-label">Oscillator Frequency [f<sub>OSC</sub>] (Hz):</label>
+                    <input type="number" class="form-control" id="fosc" name="fosc" value="500000" 
+                            min="1" step="1" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="fout" class="form-label">Overflow Frequency [f<sub>out</sub>] (Hz):</label>
+                    <input type="number" class="form-control" id="fout" name="fout" value="250" 
+                            step="0.01" min="0" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="tout" class="form-label">Or Overflow Period [t<sub>OUT</sub>] (S):</label>
+                    <input type="number" class="form-control" id="tout" name="tout" value="0.004" 
+                            step="0.01" min="0" onkeyup="calculateTMR0()" onkeypress="calculateTMR0()">
                 </div>
             </div>
+
+            <div class="d-grid gap-2 mb-4">
+                <button type="button" class="btn btn-primary" onclick="calculateTMR0()">Calculate</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">T0PS</th>
+                        <th scope="col">TMRx</th>
+                        <th scope="col">Actual Period (s)</th>
+                        <th scope="col">Actual Frequency (Hz)</th>
+                        <th scope="col">Error (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td id="tmrx2">6</td>
+                        <td id="truePeriod2">0.004</td>
+                        <td id="trueFrequency2">250.000</td>
+                        <td id="error2">0.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td id="tmrx4">131</td>
+                        <td id="truePeriod4">0.004</td>
+                        <td id="trueFrequency4">250.000</td>
+                        <td id="error4">0.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td id="tmrx8">194</td>
+                        <td id="truePeriod8">0.004</td>
+                        <td id="trueFrequency8">252.016</td>
+                        <td id="error8">0.81</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">16</th>
+                        <td id="tmrx16">225</td>
+                        <td id="truePeriod16">0.004</td>
+                        <td id="trueFrequency16">252.016</td>
+                        <td id="error16">0.81</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">32</th>
+                        <td id="tmrx32">240</td>
+                        <td id="truePeriod32">0.004</td>
+                        <td id="trueFrequency32">244.141</td>
+                        <td id="error32">-2.34</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">64</th>
+                        <td id="tmrx64">248</td>
+                        <td id="truePeriod64">0.004</td>
+                        <td id="trueFrequency64">244.141</td>
+                        <td id="error64">-2.34</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">128</th>
+                        <td id="tmrx128">252</td>
+                        <td id="truePeriod128">0.004</td>
+                        <td id="trueFrequency128">244.141</td>
+                        <td id="error128">-2.34</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">256</th>
+                        <td id="tmrx256">254</td>
+                        <td id="truePeriod256">0.004</td>
+                        <td id="trueFrequency256">244.141</td>
+                        <td id="error256">-2.34</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+
     <div class="card">
     <div class="card-body">
         <div class="accordion" id="disclaimerAccordion">
@@ -176,6 +176,7 @@
         </div>
     </div>
 </div>
+
 </main>
 
 <script src="calc.js"></script>

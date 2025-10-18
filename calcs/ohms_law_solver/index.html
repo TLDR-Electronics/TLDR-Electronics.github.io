@@ -48,99 +48,100 @@
     <!-- Main -->
     <main class="container mt-4">
         
-<h3>Ohms Law Solver</h3>
-
-<section id="input">
-  <div class="card mb-4">
-    <div class="card-body">
-      <form>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="V" class="form-label">Voltage</label>
-            <div class="input-group">
-              <input type="number" class="form-control" name="V" id="V" />
-              <select class="form-select" name="Vm" id="Vm" disabled style="max-width: 80px;">
-                <option value="1e-3">mV</option>
-                <option value="1" selected>V</option>
-                <option value="1e+3">kV</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="I" class="form-label">Current</label>
-            <div class="input-group">
-              <input type="number" class="form-control" name="I" id="I" />
-              <select class="form-select" name="Im" id="Im" disabled style="max-width: 80px;">
-                <option value="1e-12">pA</option>
-                <option value="1e-9">nA</option>
-                <option value="1e-6">µA</option>
-                <option value="1e-3">mA</option>
-                <option value="1" selected>A</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="Z" class="form-label">Resistance</label>
-            <div class="input-group">
-              <input type="number" class="form-control" name="Z" id="Z" />
-              <select class="form-select" name="Zm" id="Zm" disabled style="max-width: 80px;">
-                <option value="1e-3">mΩ</option>
-                <option value="1" selected>Ω</option>
-                <option value="1e+3">kΩ</option>
-                <option value="1e+6">MΩ</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="P" class="form-label">Power</label>
-            <div class="input-group">
-              <input type="number" class="form-control" name="P" id="P" min="0" />
-              <select class="form-select" name="Pm" id="Pm" disabled style="max-width: 80px;">
-                <option value="1e-12">pW</option>
-                <option value="1e-9">nW</option>
-                <option value="1e-6">µW</option>
-                <option value="1e-3">mW</option>
-                <option value="1" selected>W</option>
-                <option value="1e+3">kW</option>
-                <option value="1e+6">MW</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  
-  <h3>Formulae</h3>
-  <div class="card">
-    <div class="card-body">
+<div class="card mb-3">
+      <div class="card-header">
+        <h4 class="mb-0">Ohms Law Solver</h4>
+      </div>
+  <div class="card-body">
+    <form>
       <div class="row">
-        <div class="col-md-3 col-sm-6 mb-3">
-          <p>\( V = I \times R \)</p>
-          <p>\( V = {P \over I} \)</p>
-          <p>\( V = \sqrt{P \times R} \)</p>
+        <div class="col-md-6 mb-3">
+          <label for="V" class="form-label">Voltage</label>
+          <div class="input-group">
+            <input type="number" class="form-control" name="V" id="V" />
+            <select class="form-select" name="Vm" id="Vm" disabled style="max-width: 80px;">
+              <option value="1e-3">mV</option>
+              <option value="1" selected>V</option>
+              <option value="1e+3">kV</option>
+            </select>
+          </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-          <p>\( I = {V \over R} \)</p>
-          <p>\( I = {P \over V} \)</p>
-          <p>\( I = \sqrt{P \over R} \)</p>
+        <div class="col-md-6 mb-3">
+          <label for="I" class="form-label">Current</label>
+          <div class="input-group">
+            <input type="number" class="form-control" name="I" id="I" />
+            <select class="form-select" name="Im" id="Im" disabled style="max-width: 80px;">
+              <option value="1e-12">pA</option>
+              <option value="1e-9">nA</option>
+              <option value="1e-6">µA</option>
+              <option value="1e-3">mA</option>
+              <option value="1" selected>A</option>
+            </select>
+          </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-          <p>\( R = {V \over I} \)</p>
-          <p>\( R = {V^2 \over P} \)</p>
-          <p>\( R = {P \over I^2} \)</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Z" class="form-label">Resistance</label>
+          <div class="input-group">
+            <input type="number" class="form-control" name="Z" id="Z" />
+            <select class="form-select" name="Zm" id="Zm" disabled style="max-width: 80px;">
+              <option value="1e-3">mΩ</option>
+              <option value="1" selected>Ω</option>
+              <option value="1e+3">kΩ</option>
+              <option value="1e+6">MΩ</option>
+            </select>
+          </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-          <p>\( P = {V \times I} \)</p>
-          <p>\( P = {I^2 \times R} \)</p>
-          <p>\( P = {V^2 \over R} \)</p>
+        <div class="col-md-6 mb-3">
+          <label for="P" class="form-label">Power</label>
+          <div class="input-group">
+            <input type="number" class="form-control" name="P" id="P" min="0" />
+            <select class="form-select" name="Pm" id="Pm" disabled style="max-width: 80px;">
+              <option value="1e-12">pW</option>
+              <option value="1e-9">nW</option>
+              <option value="1e-6">µW</option>
+              <option value="1e-3">mW</option>
+              <option value="1" selected>W</option>
+              <option value="1e+3">kW</option>
+              <option value="1e+6">MW</option>
+            </select>
+          </div>
         </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <h4 class="mb-0">Formulae</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 mb-3">
+        <p>\( V = I \times R \)</p>
+        <p>\( V = {P \over I} \)</p>
+        <p>\( V = \sqrt{P \times R} \)</p>
+      </div>
+      <div class="col-md-3 col-sm-6 mb-3">
+        <p>\( I = {V \over R} \)</p>
+        <p>\( I = {P \over V} \)</p>
+        <p>\( I = \sqrt{P \over R} \)</p>
+      </div>
+      <div class="col-md-3 col-sm-6 mb-3">
+        <p>\( R = {V \over I} \)</p>
+        <p>\( R = {V^2 \over P} \)</p>
+        <p>\( R = {P \over I^2} \)</p>
+      </div>
+      <div class="col-md-3 col-sm-6 mb-3">
+        <p>\( P = {V \times I} \)</p>
+        <p>\( P = {I^2 \times R} \)</p>
+        <p>\( P = {V^2 \over R} \)</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <div class="card">
     <div class="card-body">

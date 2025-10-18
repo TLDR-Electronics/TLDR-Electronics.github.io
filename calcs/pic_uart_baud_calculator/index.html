@@ -48,92 +48,99 @@
     <!-- Main -->
     <main class="container mt-4">
         
-<h3>Pic UART Baud Rate Calculator</h3>
 <div class="card mb-3">
-    <p>
-        Use the calculator below to determine the register values needed for a given baud rate and clock
-        frequency. Note that older PIC’s may not feature an extended UART module (EUSART), which allows a 16-bit
-        baud rate generator to be activated via <strong>BRG16</strong> configuration bit. </p>
-    <p>
-        <div class="alert alert-info">
-        <small>
-            <i>
-                If your microcontroller does not feature a EUSART module, only use the results from the table
-                where
-                <strong>BRG16</strong> = 0.
-            </i>
-        </small>
-        </div>
-    </p>
+    <div class="card-header">
+        <h4 class="mb-0">PIC UART Baud Rate Calculator</h4>
+    </div>
+    <div class="card-body">
 
-    <div class="row mb-3">
-        <div class="col-md-6 mb-3">
-            <label for="fosc" class="form-label">Oscillator Frequency [f<sub>OSC</sub>] (Hz):
-            <input type="number" class="form-control"  id="fosc" name="fosc" value="4000000" oninput="calculateUART()"
-                onchange="calculateUART()" onkeypress="calculateUART()"></label>
-        </div>
+        <p>Use the calculator below to determine the register values needed for a given baud rate and clock
+           frequency. Note that older PIC’s may not feature an extended UART module (EUSART), which allows a 16-bit
+           baud rate generator to be activated via <strong>BRG16</strong> configuration bit. </p>
+           
+        <p>
+            <div class="alert alert-info">
+            <small>
+                <i>
+                    If your microcontroller does not feature a EUSART module, only use the results from the table
+                    where
+                    <strong>BRG16</strong> = 0.
+                </i>
+            </small>
+            </div>
+        </p>
 
-        <div class="col-md-6 mb-3">
-        <label for="baud" class="form-label">Desired Baud Rate:
-            <input type="number" class="form-control"  id="baud" name="baud" value="9600" oninput="calculateUART()" onchange="calculateUART()"
-            onkeypress="calculateUART()"></label>
+        <div class="row mb-3">
+            <div class="col-md-6 mb-3">
+                <label for="fosc" class="form-label">Oscillator Frequency [f<sub>OSC</sub>] (Hz):
+                <input type="number" class="form-control"  id="fosc" name="fosc" value="4000000" oninput="calculateUART()"
+                    onchange="calculateUART()" onkeypress="calculateUART()"></label>
+            </div>
+
+            <div class="col-md-6 mb-3">
+            <label for="baud" class="form-label">Desired Baud Rate:
+                <input type="number" class="form-control"  id="baud" name="baud" value="9600" oninput="calculateUART()" onchange="calculateUART()"
+                onkeypress="calculateUART()"></label>
+            </div>
+        </div>
+        <button class="btn btn-primary mb-3" onclick="calculateUART()">Calculate</button>
+
+        <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">BRGH</th>
+                    <th scope="col">BRG16</th>
+                    <th scope="col">Multiplier (x)</th>
+                    <th scope="col">SPBRG</th>
+                    <th scope="col">Actual Baud</th>
+                    <th scope="col">Baud Error (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>64</td>
+                    <td id="spbrg_int64">6</td>
+                    <td id="true_baud64">8928.57</td>
+                    <td id="baud_error64">7.52</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>16</td>
+                    <td id="spbrg_int16_brgh">25</td>
+                    <td id="true_baud16_brgh">9615.38</td>
+                    <td id="baud_error16_brgh">-0.16</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>16</td>
+                    <td id="spbrg_int16">25</td>
+                    <td id="true_baud16">9615.38</td>
+                    <td id="baud_error16">-0.16</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td id="spbrg_int4">103</td>
+                    <td id="true_baud4">9615.38</td>
+                    <td id="baud_error4">-0.16</td>
+                </tr>
+            </tbody>
+        </table>
         </div>
     </div>
-    <button class="btn btn-primary mb-3" onclick="calculateUART()">Calculate</button>
-    <hr>
-
-    <div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">BRGH</th>
-                <th scope="col">BRG16</th>
-                <th scope="col">Multiplier (x)</th>
-                <th scope="col">SPBRG</th>
-                <th scope="col">Actual Baud</th>
-                <th scope="col">Baud Error (%)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>64</td>
-                <td id="spbrg_int64">6</td>
-                <td id="true_baud64">8928.57</td>
-                <td id="baud_error64">7.52</td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>1</td>
-                <td>16</td>
-                <td id="spbrg_int16_brgh">25</td>
-                <td id="true_baud16_brgh">9615.38</td>
-                <td id="baud_error16_brgh">-0.16</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>0</td>
-                <td>16</td>
-                <td id="spbrg_int16">25</td>
-                <td id="true_baud16">9615.38</td>
-                <td id="baud_error16">-0.16</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>4</td>
-                <td id="spbrg_int4">103</td>
-                <td id="true_baud4">9615.38</td>
-                <td id="baud_error4">-0.16</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 </div>
 
 <div class="card mb-3">
-    <h4>Explanation:</h4>
+    <div class="card-header">
+        <h4 class="mb-0">Explanation</h4>
+    </div>
+    <div class="card-body">
 
     The formula to calculate a given baud rate for a given is:
 
@@ -171,10 +178,14 @@
         The formula to calculate baud error is:
         $ Error = {\text{Actual Baud Rate} - \text{Desired Baud Rate} \over \text{Desired Baud Rate}} $
     </p>
+    </div>
 </div>
 
 <div class="card mb-3">
-    <h4>Tips:</h4>
+    <div class="card-header">
+        <h4 class="mb-0">Tips</h4>
+    </div>
+    <div class="card-body">
     <h5>SPBRG to SPBRGH:SPBRGL</h5>
     <p>
         With EUART enabled devices, SPBRG is typically split into two 8-bit registers, SPBRGH, and SPBRGL. If
@@ -183,23 +194,24 @@
         SPBRGL values:
     </p>
 
-    <tt>
-        <blockquote>
-            <small>
-                // For Example in C, say the result for SPBRG = 64206 (or 0xFACE in hexadecimal)<br>
-                result = 0xFACE;<br>
-                SPBRGH = (result >> 8); // 0xFA will be loaded in SPBRGH<br>
-                SPBRGL = result & 0xFF; // 0xCE will be loaded in SPBRGL<br>
-            </small>
-        </blockquote>
-    </tt>
+    <p>
+        <code>
+            // For Example in C, say the result for SPBRG = 64206 (or 0xFACE in hexadecimal)<br>
+            result = 0xFACE;<br>
+            SPBRGH = (result >> 8); // 0xFA will be loaded in SPBRGH<br>
+            SPBRGL = result & 0xFF; // 0xCE will be loaded in SPBRGL<br>
+        </code>
+    </p>
+
+ 
 
     <h5>Easy Zero Baud Rate Error</h5>
     <p>Under 2% baud error is typically acceptable, but it depends on the device. If you need to get the baud rate as low as possible.
         Consider using an external oscillator that is perfectly divisible by the baud rate, such as: 3.6864 MHz,
         7.3728 MHz, 11.0592 MHz, 14.7456 MHz, etc.</p>
     </div>
-    
+</div>
+
 <div class="card">
     <div class="card-body">
         <div class="accordion" id="disclaimerAccordion">

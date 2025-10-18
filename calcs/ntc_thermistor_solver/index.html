@@ -48,124 +48,123 @@
     <!-- Main -->
     <main class="container mt-4">
         
-<div class="container-fluid py-4">
-    <h3 class="mb-4">NTC Thermistor Solver</h3>
-
-    <div class="card mb-4">
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <label for="B" class="form-label">B Constant</label>
-                    <input type="number" class="form-control" name="B" id="B" value="3500" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                </div>
-
-                <div class="mb-3">
-                    <label for="rated_resistance" class="form-label">Rated Resistance (Ω)</label>
-                    <input type="number" class="form-control" name="rated_resistance" id="rated_resistance" value="10000" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-8">
-                        <label for="rated_temperature" class="form-label">Rated Temperature</label>
-                        <input type="number" class="form-control" name="rated_temperature" id="rated_temperature" value="25" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="rated_temperature_scale" class="form-label">Scale</label>
-                        <select class="form-select" name="rated_temperature_scale" id="rated_temperature_scale" disabled>
-                            <option value="c" selected>°C</option>
-                            <option value="f">°F</option>
-                            <option value="k">K</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-8">
-                        <label for="target_temperature" class="form-label">Target Temperature</label>
-                        <input type="number" class="form-control" name="target_temperature" id="target_temperature" value="60" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="target_temperature_scale" class="form-label">Scale</label>
-                        <select class="form-select" name="target_temperature_scale" id="target_temperature_scale" disabled>
-                            <option value="c" selected>°C</option>
-                            <option value="f">°F</option>
-                            <option value="k">K</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-            <div id="result" class="mt-3 p-3 bg-secondary rounded"></div>
-        </div>
+<div class="card mb-3">
+    <div class="card-header">
+        <h4 class="mb-0">NTC Thermistor Solver</h4>
     </div>
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label for="B" class="form-label">B Constant</label>
+                <input type="number" class="form-control" name="B" id="B" value="3500" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            </div>
 
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="accordion" id="graphAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphCollapse" aria-expanded="false" aria-controls="graphCollapse">
-                            Graph
-                        </button>
-                    </h2>
-                    <div id="graphCollapse" class="accordion-collapse collapse" data-bs-parent="#graphAccordion">
-                        <div class="accordion-body">
-                            <div id="chart-container" class="text-center">
-                                <canvas id="ntcChart" width="300" height="300"></canvas>
-                            </div>
+            <div class="mb-3">
+                <label for="rated_resistance" class="form-label">Rated Resistance (Ω)</label>
+                <input type="number" class="form-control" name="rated_resistance" id="rated_resistance" value="10000" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <label for="rated_temperature" class="form-label">Rated Temperature</label>
+                    <input type="number" class="form-control" name="rated_temperature" id="rated_temperature" value="25" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+                </div>
+                <div class="col-md-4">
+                    <label for="rated_temperature_scale" class="form-label">Scale</label>
+                    <select class="form-select" name="rated_temperature_scale" id="rated_temperature_scale" disabled>
+                        <option value="c" selected>°C</option>
+                        <option value="f">°F</option>
+                        <option value="k">K</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <label for="target_temperature" class="form-label">Target Temperature</label>
+                    <input type="number" class="form-control" name="target_temperature" id="target_temperature" value="60" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+                </div>
+                <div class="col-md-4">
+                    <label for="target_temperature_scale" class="form-label">Scale</label>
+                    <select class="form-select" name="target_temperature_scale" id="target_temperature_scale" disabled>
+                        <option value="c" selected>°C</option>
+                        <option value="f">°F</option>
+                        <option value="k">K</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div id="result" class="mt-3 p-3 bg-secondary rounded"></div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="accordion" id="graphAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphCollapse" aria-expanded="false" aria-controls="graphCollapse">
+                        Graph
+                    </button>
+                </h2>
+                <div id="graphCollapse" class="accordion-collapse collapse" data-bs-parent="#graphAccordion">
+                    <div class="accordion-body">
+                        <div id="chart-container" class="text-center">
+                            <canvas id="ntcChart" width="300" height="300"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <h4 class="mb-0">Voltage Divider</h4>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="mb-3">
-                    <label for="rail_voltage" class="form-label">Input Voltage (V)</label>
-                    <input type="number" class="form-control" name="rail_voltage" id="rail_voltage" value="5" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                </div>
-
-                <div class="mb-3">
-                    <label for="trigger_voltage" class="form-label">Trigger Voltage (V)</label>
-                    <input type="number" class="form-control" name="trigger_voltage" id="trigger_voltage" value="2.5" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                </div>
-
-                <div class="mb-3">
-                    <label for="trigger_temperature" class="form-label">Trigger Temperature (°C)</label>
-                    <input type="number" class="form-control" name="trigger_temperature" id="trigger_temperature" value="60" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
-                </div>
-
-                <div class="form-check form-switch mb-3">
-                    <input class="form-check-input" type="checkbox" role="switch" name="ntc_on_top" id="ntc_on_top" onchange="calculateNTCSheet()">
-                    <label class="form-check-label" for="ntc_on_top">NTC on top</label>
-                </div>
-
-                <div class="text-center mb-3">
-                    <img id="ntc_image" src="images/ntc_bottom.svg" class="img-fluid" alt="NTC Circuit Diagram">
-                </div>
-            </form>
-            <div id="target_resistance" class="alert alert-info">Target Resistance = </div>
-        </div>
+<div class="card mb-3">
+    <div class="card-header">
+        <h4 class="mb-0">Voltage Divider</h4>
     </div>
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label for="rail_voltage" class="form-label">Input Voltage (V)</label>
+                <input type="number" class="form-control" name="rail_voltage" id="rail_voltage" value="5" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            </div>
+
+            <div class="mb-3">
+                <label for="trigger_voltage" class="form-label">Trigger Voltage (V)</label>
+                <input type="number" class="form-control" name="trigger_voltage" id="trigger_voltage" value="2.5" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            </div>
+
+            <div class="mb-3">
+                <label for="trigger_temperature" class="form-label">Trigger Temperature (°C)</label>
+                <input type="number" class="form-control" name="trigger_temperature" id="trigger_temperature" value="60" onchange="calculateNTCSheet()" onkeyup="calculateNTCSheet()">
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" name="ntc_on_top" id="ntc_on_top" onchange="calculateNTCSheet()">
+                <label class="form-check-label" for="ntc_on_top">NTC on top</label>
+            </div>
+
+            <div class="text-center mb-3">
+                <img id="ntc_image" src="images/ntc_bottom.svg" class="img-fluid" alt="NTC Circuit Diagram">
+            </div>
+        </form>
+        <div id="target_resistance" class="alert alert-info">Target Resistance = </div>
+    </div>
+</div>
 
     <div class="card">
-        <div class="card-body">
-            <div class="accordion" id="disclaimerAccordion">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#disclaimerCollapse" aria-expanded="false" aria-controls="disclaimerCollapse">
-                            Disclaimer
-                        </button>
-                    </h2>
-                    <div id="disclaimerCollapse" class="accordion-collapse collapse" data-bs-parent="#disclaimerAccordion">
-                        <div class="accordion-body">
-                            <p>This calculator is intended for reference only. While efforts have been made to ensure the accuracy of calculations, no warranty is provided. Users must independently verify results before applying them in design, testing, or production. This tool is not intended for safety-critical or certified applications. Use at your own risk.</p>
-                        </div>
+    <div class="card-body">
+        <div class="accordion" id="disclaimerAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#disclaimerCollapse" aria-expanded="false" aria-controls="disclaimerCollapse">
+                        Disclaimer
+                    </button>
+                </h2>
+                <div id="disclaimerCollapse" class="accordion-collapse collapse" data-bs-parent="#disclaimerAccordion">
+                    <div class="accordion-body">
+                        <p>This calculator is intended for reference only. While efforts have been made to ensure the accuracy of calculations, no warranty is provided. Users must independently verify results before applying them in design, testing, or production. This tool is not intended for safety-critical or certified applications. Use at your own risk.</p>
                     </div>
                 </div>
             </div>

@@ -48,9 +48,10 @@
     <!-- Main -->
     <main class="container mt-4">
         
-<h3>Capacitor Holdup Solver</h3>
-
-<div class="card">
+<div class="card mb-3">
+    <div class="card-header">
+        <h4 class="mb-0">Capacitor Holdup Solver</h4>
+    </div>
     <div class="card-body">
         
         <form onclick="calculate_capacitance()" onkeyup="calculate_capacitance()">
@@ -131,6 +132,26 @@
             <h5 class="mb-0">Capacitance Required: <strong id="output" class="text-white"></strong></h5>
         </div>
     </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="accordion" id="disclaimerAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#disclaimerCollapse" aria-expanded="false" aria-controls="disclaimerCollapse">
+                        Disclaimer
+                    </button>
+                </h2>
+                <div id="disclaimerCollapse" class="accordion-collapse collapse" data-bs-parent="#disclaimerAccordion">
+                    <div class="accordion-body">
+                        <p>This calculator is intended for reference only. While efforts have been made to ensure the accuracy of calculations, no warranty is provided. Users must independently verify results before applying them in design, testing, or production. This tool is not intended for safety-critical or certified applications. Use at your own risk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="calc.js"></script>
     </div>
