@@ -752,21 +752,33 @@ function saveToURL() {
     });
   });
 
-  // Convert to JSON and then to base64
+  // Convert to JSON
   const jsonString = JSON.stringify(graphData);
-  // debug, print the json string to console
-  console.log(jsonString);
-  const base64Data = btoa(jsonString);
+  console.log('Original JSON length:', jsonString.length);
   
-  // Update URL
-  const url = new URL(window.location);
-  url.searchParams.set('data', base64Data);
-  window.history.pushState({}, '', url);
-  
-  // Update status
-  document.getElementById('status-text').textContent = 'Graph saved to URL - you can bookmark or share this link';
-  
-  return url.toString();
+  try {
+    // Compress using pako
+    const compressed = pako.deflate(jsonString, { level: 9 });
+    
+    // Convert compressed data to base64
+    const base64Data = btoa(String.fromCharCode.apply(null, compressed));
+    // console.log('Compressed base64 length:', base64Data.length);
+    // console.log('Compression ratio:', (base64Data.length / jsonString.length * 100).toFixed(2) + '%');
+    
+    // Update URL
+    const url = new URL(window.location);
+    url.searchParams.set('data', base64Data);
+    window.history.pushState({}, '', url);
+    
+    // Update status
+    document.getElementById('status-text').textContent = 'Graph saved to URL - you can bookmark or share this link';
+    
+    return url.toString();
+  } catch (error) {
+    console.error('Compression error:', error);
+    document.getElementById('status-text').textContent = 'Error compressing graph data';
+    return null;
+  }
 }
 
 function loadFromURL() {
@@ -778,12 +790,20 @@ function loadFromURL() {
   }
   
   try {
-    // Decode base64 and parse JSON
-    const jsonString = atob(base64Data);
-    const graphData = JSON.parse(jsonString);
+    // Decode base64
+    const compressedData = atob(base64Data);
     
-    // debug, print the json string to console
-    console.log(graphData);
+    // Convert string to Uint8Array
+    const charData = compressedData.split('').map(x => x.charCodeAt(0));
+    const binData = new Uint8Array(charData);
+    
+    // Decompress using pako
+    const decompressed = pako.inflate(binData, { to: 'string' });
+    
+    // Parse JSON
+    const graphData = JSON.parse(decompressed);
+    
+    console.log('Loaded graph data:', graphData);
     
     // Clear existing graph
     cy.elements().remove();
@@ -866,7 +886,7 @@ function loadFromURL() {
     
   } catch (error) {
     console.error('Error loading from URL:', error);
-    document.getElementById('status-text').textContent = 'Error loading graph from URL';
+    document.getElementById('status-text').textContent = 'Error loading graph from URL: ' + error.message;
     return false;
   }
 }
